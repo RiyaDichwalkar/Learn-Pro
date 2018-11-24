@@ -1,0 +1,11 @@
+RGB= imread('radius.png');
+imshow(RGB);
+hTxt=text(320,250,'Estimate radius of the roll of tape','FontWeight','bold','Color','r');
+[center,radius]=imfindcircles(RGB,[60 100],'Sensitivity',0.95);
+viscircles(center,radius);
+hold on;
+plot(center(:,1),center(:,2),'yx','LineWidth',2);
+hold off;
+delete(hTxt);
+message=sprintf('The estimated radius is %0.1f pixels',radius);
+text(150,15,message,'Color','r','FontWeight','bold');
